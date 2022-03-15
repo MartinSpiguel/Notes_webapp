@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title_block %}Home{% endblock %}
+
+{% block content %}
+<h1 align="center">Notes</h1>
+<form method="POST">
+    <div style="padding-left:100px; padding-right:100px; padding-bottom:20px; padding-top:20px;">
+        <textarea style="height:100px;" name="note" id="note" class="form-control" placeholder="Write your note here"></textarea>
+    </div>
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add note</button>
+    </div>
+</form>
+<div style="padding-left:100px; padding-right:100px; padding-bottom:20px; padding-top:20px;">
+    <ul class="list-group list-group-flush" id="notes">
+        {% for note in user.notes[::-1] %}
+        <li class="list-group-item">
+            <p style="color:grey; font-size:small; margin-bottom:0px; float:left;">{{ note.date.strftime("%B %d, %Y") }}</p>
+            <p style="color:grey; font-size:small; margin-bottom:0px; float:right;">{{ note.date.strftime("%H:%M") }}</p>
+            <br>
+            <button style="float:right;" type="button" class="btn-close" aria-label="Close" onClick="deleteNote({{ note.id }})"></button>
+            <p>{{ note.data }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
