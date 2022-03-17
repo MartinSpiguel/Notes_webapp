@@ -20,7 +20,7 @@
             <p style="color:grey; font-size:small; margin-bottom:0px; float:right;">{{ note.date.strftime("%H:%M") }}</p>
             <br>
             <button style="float:right;" type="button" class="btn-close" aria-label="Close" onClick="deleteNote({{ note.id }})"></button>
-            <p>{{ note.data }}</p>
+            <p style="word-wrap:break-word">{{ note.data }}</p>
         </li>
         {% endfor %}
     </ul>
